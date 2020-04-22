@@ -1,19 +1,29 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import Login from './Login'
+import SignUp from './SignUp'
+import ItemList from './ItemList'
+import Firebase from "./FirebaseConfig";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
+// import {createSwitchNavigator} from 'react-navigation-switch'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
+
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import {
+  View,
+  Text,
+  StyleSheet
+} from "react-native";
+
+const AppStack = createStackNavigator({
+  
+  Login: Login,
+  SignUp: SignUp,
+  ItemList: ItemList,
+
+
+  
 });
+
+export default createAppContainer(AppStack);
