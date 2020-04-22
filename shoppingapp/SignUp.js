@@ -22,13 +22,7 @@ class Signup extends React.Component {
        
   
       .catch(error => console.log(error));
-      Firebase.firestore()
-      .collection('SkateSpots')
-      .add(user)
-      .then((snapshot)=>{
-        user.id = snapshot.id;
-        snapshot.set(user);
-      })
+       addToFirestore('Users',user)
 
       this.props.navigation.navigate("ItemList")}
   state = {

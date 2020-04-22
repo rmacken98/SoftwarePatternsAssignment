@@ -12,11 +12,15 @@ export function addToFirestore (object){
   ).then((data) => addComplete(data))
   }
 
-// export const addToFirestore= (object) => {
-//     Firebase.firestore()
-//     .collection('Users')
-//     .add({object})
-//   }
+export function addToFirestore (collection, object) {
+    Firebase.firestore()
+    .collection(collection)
+    .add({object}) 
+    .then((snapshot)=>{
+        object.id = snapshot.id;
+        snapshot.set(object);
+      })
+  }
   // export const addToFirestore  =(type,object) => {
    
   
