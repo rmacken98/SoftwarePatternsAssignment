@@ -22,11 +22,25 @@ class Login extends React.Component {
   handleLogin = () => {
     const { email, password } = this.state;
 
+  if (email=== 'admin' &&  password ==='yowhatup'){
+    Firebase.auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(() => this.props.navigation.navigate("AdminItemList"))
+    .catch(error => console.log(error));
+}
+
+  else{
+   
+   
     Firebase.auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => this.props.navigation.navigate("ItemList"))
       .catch(error => console.log(error));
+  }
   };
+
+
+
   state = {
     email: "",
     password: ""
